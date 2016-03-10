@@ -4,23 +4,18 @@
 #include "GarageDoorOpener.h"
 
 
-class InputScanner {
+class InputScanner
+{
 
  public:
 
-    virtual void alertOvercurrent(void  reciever);
+    static void* InputScannerThread(void* arg);
+    virtual void alertOvercurrent();
+    virtual void alertbeam();
+    virtual void alertbutton();
 
-    virtual void alertbeam(void  reciever);
 
-    virtual void alertbutton(void  reciever);
-
- public:
-    Integer InputThread(scan());
-    GarageDoorOpener Reciever;
-
- public:
-
-    GarageDoorOpener *myGarageDoorOpener;
+    //GarageDoorOpener *myGarageDoorOpener;
 };
 
 #endif // InputScanner_h

@@ -1,16 +1,14 @@
 #include "StateContext.h"
 
 
-
-
 void StateContext::transition(char event)
 {
 	//Overcurrent
 	if(event == 'O'){
-		if(this.ActiveState.tOvercurrent() != 0){
-			this.ActiveState.exit();
-			this.ActiveState = ActiveState.tOvercurrent();
-			this.ActiveState.entry();
+		if(ActiveState.tOvercurrent() != 0){
+			ActiveState.Exit();
+			*ActiveState = ActiveState.tOvercurrent();
+			*ActiveState.Entry();
 
 		}
 	}
@@ -50,5 +48,5 @@ void StateContext::transition(char event)
 
 State StateContext::getActiveState()
 {
-	return(this.ActiveState);
+	return(this->ActiveState);
 }

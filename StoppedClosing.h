@@ -4,6 +4,6 @@
 #include "State.h"
 
 
-class StoppedClosing : public State, public State {};
+class StoppedClosing : public State {};
 
 #endif // StoppedClosing_h

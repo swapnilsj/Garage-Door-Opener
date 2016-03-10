@@ -1,6 +1,7 @@
 #include "Open.h"
 
 
-State::Entry(){
-	coun << "Garage door opened\n";
+void State::Entry()
+{
+	std::cout << "Garage door opened" << std::endl;
 }

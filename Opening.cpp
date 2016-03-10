@@ -1,9 +1,9 @@
 #include "Opening.h"
 
-State::Entry(){
-	cout << "Garage Door Opening, beam on\n";
+void State::Entry(){
+	std::cout << "Garage Door Opening, beam on\n" << std::endl;
 }
 
-State::Exit(){
-	cout << "Beam off\n";
+void State::Exit(){
+	std::cout << "Beam off\n" << std::endl;
 }

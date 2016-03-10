@@ -1,11 +1,11 @@
 #include "Closing.h"
 
-State::Entry(){
-	cout << "Garage Door Closing, beam on\n";
+void State::Entry(){
+	std::cout << "Garage Door Closing, beam on" << std::endl;
 }
 
-State::Exit(){
-	cout << "Beam off\n";
+void State::Exit(){
+	std::cout << "Beam off" << std::endl;
 }
 
 

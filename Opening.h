@@ -4,6 +4,8 @@
 #include "State.h"
 
 
-class Opening : public State, virtual public State {};
+class Opening : public State {
+
+};
 
 #endif // Opening_h

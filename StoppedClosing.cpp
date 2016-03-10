@@ -1,5 +1,5 @@
 #include "StoppedClosing.h"
 
-State::Entry(){
-	cout << "Garage Door Closing\n";
+void State::Entry(){
+	std::cout << "Garage Door Closing\n" << std::endl;
 }
