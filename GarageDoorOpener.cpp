@@ -5,6 +5,13 @@ GarageDoorOpener::GarageDoorOpener()
 {
 	receivedInput = 'x'; // Initialized to default
 	InputScanner myInputScanner;
+	motorDown = false;
+	motorUp = false;
+	beamOn = false;
+	
+	//create state objects here
+	
+	
 
 	// create the inputscanner thread
 	pthread_attr_t threadAttr;
@@ -18,4 +25,20 @@ GarageDoorOpener::GarageDoorOpener()
 GarageDoorOpener::~GarageDoorOpener()
 {
 	// What should go here?
+}
+
+void setmotorDown(bool arg){
+	
+}
+
+void setmotorUp(bool arg){
+	
+}
+
+void setBeam(bool arg){
+	
+}
+
+void* DoorThread(void* param){
+	
 }

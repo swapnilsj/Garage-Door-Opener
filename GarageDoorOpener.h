@@ -32,6 +32,15 @@ class GarageDoorOpener {
     // constructor
     GarageDoorOpener();    // destructor
     ~GarageDoorOpener();
+    void setmotorDown(bool);
+    void setmotorUp(bool);
+    void setBeam(bool);
+    void* DoorThread(void*);
+    
+ private:
+    bool motorDown;
+    bool motorUp;
+    bool beamOn;
 };
 
 #endif // GarageDoorOpener_h
