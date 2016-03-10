@@ -1,7 +1,7 @@
 #ifndef InputScanner_h
 #define InputScanner_h
 
-#include "GarageDoorOpener.h"
+//#include "GarageDoorOpener.h"
 
 
 class InputScanner
@@ -10,9 +10,9 @@ class InputScanner
  public:
 
     static void* InputScannerThread(void* arg);
-    virtual void alertOvercurrent();
-    virtual void alertbeam();
-    virtual void alertbutton();
+    void alertOvercurrent();
+    void alertbeam();
+    void alertbutton();
 
 
     //GarageDoorOpener *myGarageDoorOpener;

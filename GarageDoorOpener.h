@@ -19,7 +19,7 @@
 #include <inttypes.h>     /* for ClockCycles() return value*/
 
 #include "InputScanner.h"
-#include "StateContext.h"
+//#include "StateContext.h"
 
 class GarageDoorOpener {
 
@@ -27,7 +27,7 @@ class GarageDoorOpener {
 	char receivedInput;
 	pthread_t GDOThread;
 	//InputScanner myInputScanner;
-    StateContext myStateContext;
+    //StateContext myStateContext;
 
     // constructor
     GarageDoorOpener();    // destructor
