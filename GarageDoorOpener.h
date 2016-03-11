@@ -19,7 +19,14 @@
 #include <inttypes.h>     // for ClockCycles() return value
 
 #include "InputScanner.h"
-//#include "StateContext.h"
+#include "StateContext.h"
+#include "Closed.h"
+#include "Closing.h"
+#include "Open.h"
+#include "Opening.h"
+#include "StoppedClosing.h"
+#include "StoppedOpening.h"
+#include "Globals.h"
 
 class GarageDoorOpener {
 

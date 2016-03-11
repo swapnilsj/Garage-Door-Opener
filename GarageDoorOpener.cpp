@@ -1,5 +1,5 @@
 #include "GarageDoorOpener.h"
-#include "State.h"
+
 
 // GarageDoorOpener constructor
 GarageDoorOpener::GarageDoorOpener()
@@ -53,5 +53,5 @@ void setBeam(bool arg)
 
 void* DoorThread(void* param)
 {
-
+	return 0;
 }

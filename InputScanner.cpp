@@ -1,6 +1,5 @@
-#include "InputScanner.h"
-#include "Globals.h"
-#include <iostream>
+#include "GarageDoorOpener.h"
+
 
 // Input scanner thread
 // to be run at 1Hz
