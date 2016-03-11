@@ -6,17 +6,17 @@
 #include <string>
 #include <iomanip>
 
-/* QNX Libraries */
-#include <pthread.h>      /* pthread function calls */
+// QNX Libraries
+#include <pthread.h>      // pthread function calls
 #include <sys/neutrino.h>
 #include <sys/netmgr.h>
-#include <sys/syspage.h>  /* SYSPAGE_ENTRY() function */
+#include <sys/syspage.h>  // SYSPAGE_ENTRY() function
 #include <time.h>
-#include <unistd.h>       /* for sleep() */
-#include <stdint.h>       /* for uintptr_t */
-#include <hw/inout.h>     /* for in*() and out*() functions */
-#include <sys/mman.h>     /* for mmap_device_io() */
-#include <inttypes.h>     /* for ClockCycles() return value*/
+#include <unistd.h>       // for sleep()
+#include <stdint.h>       // for uintptr_t
+#include <hw/inout.h>     // for in*() and out*() functions
+#include <sys/mman.h>     // for mmap_device_io()
+#include <inttypes.h>     // for ClockCycles() return value
 
 #include "InputScanner.h"
 //#include "StateContext.h"
@@ -24,10 +24,10 @@
 class GarageDoorOpener {
 
  public:
-	char receivedInput;
-	pthread_t GDOThread;
-	//InputScanner myInputScanner;
-    //StateContext myStateContext;
+	static char receivedInput;
+	static char event;
+	pthread_t GDOThreadID;
+	pthread_t inputScannerThreadID;
 
     // constructor
     GarageDoorOpener();    // destructor

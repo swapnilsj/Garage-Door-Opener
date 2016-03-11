@@ -16,8 +16,7 @@ void* InputThread(void* arg)
 
 		std::cin >> userChoice;
 
-		//switch(tolower(userChoice))
-		switch(userChoice)
+		switch(tolower(userChoice))
 		{
 			case 'm': // motor overcurrent
 				((InputScanner*)arg)->alertOvercurrent(); // set the shared variable
@@ -36,8 +35,7 @@ void* InputThread(void* arg)
 				std::cout << "\nInvalid option. Try again" << std::endl << std::endl;
 		}
 
-	} while((userChoice) != 'x');
-	//while(tolower(userChoice) != 'x');
+	} while(tolower(userChoice) != 'x');
 
 	return 0;
 }

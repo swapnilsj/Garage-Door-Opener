@@ -1,44 +1,57 @@
 #include "GarageDoorOpener.h"
+#include "State.h"
 
 // GarageDoorOpener constructor
 GarageDoorOpener::GarageDoorOpener()
 {
 	receivedInput = 'x'; // Initialized to default
-	InputScanner myInputScanner;
+	event = 'x';
+
 	motorDown = false;
 	motorUp = false;
 	beamOn = false;
-	
-	//create state objects here
-	
-	
+
+	InputScanner myInputScanner;
+    StateContext myStateContext;
+
+    // create state objects here
+
+
+    //
 
 	// create the inputscanner thread
 	pthread_attr_t threadAttr;
 	pthread_attr_init(&threadAttr);		// initialize thread attributes structure
 	pthread_attr_setdetachstate(&threadAttr, PTHREAD_CREATE_JOINABLE);
-	pthread_create(&GDOThread, &threadAttr, &InputScanner::InputScannerThread, &myInputScanner);
+	pthread_create(&inputScannerThreadID, &threadAttr, &InputScanner::InputScannerThread, &myInputScanner);
 
 }
 
 // GarageDoorOpener destructor
 GarageDoorOpener::~GarageDoorOpener()
 {
-	// What should go here?
+	// input scanner will join when GDO object is no longer available
+	pthread_join(inputScannerThreadID, NULL);
+
+	// What else should go here?
 }
 
-void setmotorDown(bool arg){
-	
+void setmotorDown(bool arg)
+{
+
 }
 
-void setmotorUp(bool arg){
-	
+void setmotorUp(bool arg)
+{
+
 }
 
-void setBeam(bool arg){
-	
+void setBeam(bool arg)
+{
+
 }
 
-void* DoorThread(void* param){
-	
+void* DoorThread(void* param)
+{
+
 }
