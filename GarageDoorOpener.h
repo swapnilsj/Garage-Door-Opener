@@ -44,7 +44,8 @@ class GarageDoorOpener {
     void setBeam(bool);
     void* DoorThread(void*);
     
- private:
+ //private:
+	int count;
     bool motorDown;
     bool motorUp;
     bool beamOn;

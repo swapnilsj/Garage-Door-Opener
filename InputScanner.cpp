@@ -3,7 +3,7 @@
 
 // Input scanner thread
 // to be run at 1Hz
-void* InputThread(void* arg)
+void* InputScanner::InputScannerThread(void* arg)
 {
 	char userChoice = 'x';
 	// Start the scanning
@@ -30,11 +30,15 @@ void* InputThread(void* arg)
 				((InputScanner*)arg)->alertbutton(); // set the shared variable
 				break;
 
+			case 'e': // remote button press
+				std::cout << "\nExiting the InputScannerThread..." << std::endl << std::endl;
+				return;
+
 			default:
 				std::cout << "\nInvalid option. Try again" << std::endl << std::endl;
 		}
 
-	} while(tolower(userChoice) != 'x');
+	} while(true);
 
 	return 0;
 }
@@ -44,7 +48,9 @@ void InputScanner::alertOvercurrent()
 {
 	if(MUTEX == false){
 		MUTEX = true;
-		OVERCURRENT = true;
+		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true;){
+			OVERCURRENT = true;
+		}
 		MUTEX = false;
 	}
 }
@@ -53,7 +59,9 @@ void InputScanner::alertbeam()
 {
 	if(MUTEX == false){
 		MUTEX = true;
-		INTERRUPT = true;
+		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true;){
+			INTERRUPT = true;
+		}
 		MUTEX = false;
 	}
 }
@@ -63,7 +71,9 @@ void InputScanner::alertbutton()
 {
 	if(MUTEX == false){
 		MUTEX = true;
-		BUTTON = true;
+		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true;){
+			BUTTON = true;
+		}
 		MUTEX = false;
 	}
 }
