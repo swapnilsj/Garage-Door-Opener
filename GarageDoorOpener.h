@@ -36,6 +36,9 @@ class GarageDoorOpener {
 	pthread_t GDOThreadID;
 	pthread_t inputScannerThreadID;
 
+	InputScanner* myInputScanner;
+    StateContext* myStateContext;
+
     // constructor
     GarageDoorOpener();    // destructor
     ~GarageDoorOpener();

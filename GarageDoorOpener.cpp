@@ -29,14 +29,14 @@ GarageDoorOpener::GarageDoorOpener()
 	SCState.setTransitions(0, 0, OpeningState, 0);
 	SOState.setTransitions(0, 0, ClosingState, 0);
 
-    InputScanner myInputScanner;
-    StateContext myStateContext(ClosedState);
+    myInputScanner = new InputScanner();
+    myStateContext = new StateContext(&ClosedState);
 
 	// create the inputscanner thread
 	pthread_attr_t threadAttr;
 	pthread_attr_init(&threadAttr);		// initialize thread attributes structure
 	pthread_attr_setdetachstate(&threadAttr, PTHREAD_CREATE_JOINABLE);
-	pthread_create(&inputScannerThreadID, &threadAttr, &InputScanner::InputScannerThread, &myInputScanner);
+	pthread_create(&inputScannerThreadID, &threadAttr, &InputScanner::InputScannerThread, this);
 
 }
 
@@ -74,7 +74,7 @@ void* GarageDoorOpener::DoorThread(void* param)
 		}
 		//Garage door has fully closed or opened
 		if(((GarageDoorOpener*)param)->count == 10 && (((GarageDoorOpener*)param)->motorUp || ((GarageDoorOpener*)param)->motorDown)){
-			((GarageDoorOpener*)param)->myStateContext.transition('F');
+			((GarageDoorOpener*)param)->myStateContext->transition('F');
 			((GarageDoorOpener*)param)->count = 0;
 			continue;
 		}
@@ -82,13 +82,13 @@ void* GarageDoorOpener::DoorThread(void* param)
 		if(MUTEX == false){
 			MUTEX = true;
 			if(OVERCURRENT == true){
-				((GarageDoorOpener*)param)->myStateContext.transition('O');
+				((GarageDoorOpener*)param)->myStateContext->transition('O');
 			}
 			if(BUTTON == true){
-				((GarageDoorOpener*)param)->myStateContext.transition('P');
+				((GarageDoorOpener*)param)->myStateContext->transition('P');
 			}
 			if(INTERRUPT == true && ((GarageDoorOpener*)param)->beamOn){
-				((GarageDoorOpener*)param)->myStateContext.transition('I');
+				((GarageDoorOpener*)param)->myStateContext->transition('I');
 			}
 			MUTEX = false;
 			if(TRANSITIONED){
