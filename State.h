@@ -13,7 +13,7 @@ class State {
 	/*
 	 * States can change variables in the garagedooropener
 	 */
-	State(GarageDoorOpener*);
+	//State(GarageDoorOpener*);
 	
 	/*
 	 * Entry actions on a state change
@@ -39,7 +39,7 @@ class State {
     void setTransitions(State*, State*, State*, State*);
 
 
- protected:
+ //protected:
 
     GarageDoorOpener *reciever;
     State* Overcurrent;

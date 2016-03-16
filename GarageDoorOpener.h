@@ -28,6 +28,9 @@
 #include "StoppedOpening.h"
 #include "Globals.h"
 
+class InputScanner;
+class StateContext;
+
 class GarageDoorOpener {
 
  public:

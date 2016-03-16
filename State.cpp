@@ -1,8 +1,8 @@
 #include "State.h"
 
-State::State(GarageDoorOpener* door){
-	reciever = door;
-}
+//State::State(GarageDoorOpener* door){
+//	reciever = door;
+//}
 
 
 State* State::tOvercurrent()

@@ -14,20 +14,20 @@ GarageDoorOpener::GarageDoorOpener()
 	
 
     // create state objects here
-	Closed ClosedState(this);
-	Closing ClosingState(this);
-	Open OpenState(this);
-	Opening OpeningState(this);
-	StoppedClosing SCState(this);
-	StoppedOpening SOState(this);
+	Closed ClosedState;
+	Closing ClosingState;
+	Open OpenState;
+	Opening OpeningState;
+	StoppedClosing SCState;
+	StoppedOpening SOState;
 	
 	//Overcurrent, interrupt, button, finished
-	ClosedState.setTransitions(0, 0 , OpeningState, 0);
-	ClosingState.setTransitions(OpeningState, OpeningState, SCState, ClosedState);
-	OpenState.setTransitions(0, 0, ClosingState, 0);
-	OpeningState.setTransitions(SOState, 0, SOState, OpenState);
-	SCState.setTransitions(0, 0, OpeningState, 0);
-	SOState.setTransitions(0, 0, ClosingState, 0);
+	ClosedState.setTransitions(0, 0 , &OpeningState, 0);
+	ClosingState.setTransitions(&OpeningState, &OpeningState, &SCState, &ClosedState);
+	OpenState.setTransitions(0, 0, &ClosingState, 0);
+	OpeningState.setTransitions(&SOState, 0, &SOState, &OpenState);
+	SCState.setTransitions(0, 0, &OpeningState, 0);
+	SOState.setTransitions(0, 0, &ClosingState, 0);
 
     myInputScanner = new InputScanner();
     myStateContext = new StateContext(&ClosedState);
