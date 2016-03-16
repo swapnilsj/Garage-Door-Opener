@@ -1,8 +1,10 @@
 #ifndef State_h
 #define State_h
-#include <iostream>
+#include "GarageDoorOpener.h"
 
-class StateContext;
+
+//class StateContext;
+class GarageDoorOpener;
 
 class State {
 
@@ -16,12 +18,12 @@ class State {
 	/*
 	 * Entry actions on a state change
 	 */
-    virtual void Entry();
+    void Entry();
 
     /*
      * Exit actions on a state change
      */
-    virtual void Exit();
+    void Exit();
 
     /*
      * The following five functions represent transitions
@@ -34,17 +36,17 @@ class State {
 	//Finished represents the transition between the door moving and it completing a movement
     State* tFinished();
 
-    void setTransitions(State, State, State, State);
+    void setTransitions(State*, State*, State*, State*);
 
 
  protected:
 
     GarageDoorOpener *reciever;
-    StateContext *myStateContext;
-    State *Overcurrent;
-    State *Beam;
-    State *Button;
-    State *Finished;
+    //StateContext *myStateContext;
+    State* Overcurrent;
+    State* Beam;
+    State* Button;
+    State* Finished;
 };
 
 #endif // State_h

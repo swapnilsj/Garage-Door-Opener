@@ -5,21 +5,20 @@
 
 #include "State.h"
 
-class State;
 class GarageDoorOpener;
 
 class StateContext {
 
  public:
+	// Attributes
+    void* ActiveState;
+    GarageDoorOpener *myGarageDoorOpener;
 
+    // Methods
+    StateContext(void*);
     void transition(char);
-	StateContext(State);
-
     //State getActiveState();
 
-    State ActiveState;
-
-    GarageDoorOpener *myGarageDoorOpener;
 };
 
 #endif // StateContext_h
