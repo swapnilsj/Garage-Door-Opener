@@ -90,15 +90,19 @@ void* GarageDoorOpener::DoorThread(void* param)
 			if(INTERRUPT == true && ((GarageDoorOpener*)param)->beamOn){
 				((GarageDoorOpener*)param)->myStateContext->transition('I');
 			}
+
 			MUTEX = false;
-			if(TRANSITIONED){
+
+			if(TRANSITIONED)
+			{
 				((GarageDoorOpener*)param)->count = 0;
 				TRANSITIONED = false;
 				continue;
 			}
 		}
+
 		((GarageDoorOpener*)param)->count++;
-		nanospin_ns(1E9);
+		sleep(1);
 	}
 	return 0;
 }

@@ -38,13 +38,11 @@ class GarageDoorOpener {
 	static char event;
 	pthread_t GDOThreadID;
 	pthread_t inputScannerThreadID;
-
 	InputScanner* myInputScanner;
     StateContext* myStateContext;
 
-    // constructor
-    GarageDoorOpener();    // destructor
-    ~GarageDoorOpener();
+    GarageDoorOpener();		// constructor
+    ~GarageDoorOpener();	// destructor
     void setmotorDown(bool);
     void setmotorUp(bool);
     void setBeam(bool);
