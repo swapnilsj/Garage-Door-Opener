@@ -1,17 +1,12 @@
 #include "GarageDoorOpener.h"
-#include <stdio.h>
 
 // GarageDoorOpener constructor
 GarageDoorOpener::GarageDoorOpener()
 {
-	receivedInput = 'x'; // Initialized to default
-	event = 'x';
-
 	motorDown = false;
 	motorUp = false;
 	beamOn = false;
 	count = 0;
-	
 
     // create state objects here
 	Closed ClosedState;
@@ -70,7 +65,7 @@ void* GarageDoorOpener::DoorThread(void* param)
 	while(1){
 		//Printing the countdown if the door is moving
 		if(((GarageDoorOpener*)param)->motorDown || ((GarageDoorOpener*)param)->motorUp){
-			printf("%d\n", ((GarageDoorOpener*)param)->count);
+			std::cout << ((GarageDoorOpener*)param)->count << std::endl;
 		}
 		//Garage door has fully closed or opened
 		if(((GarageDoorOpener*)param)->count == 10 && (((GarageDoorOpener*)param)->motorUp || ((GarageDoorOpener*)param)->motorDown)){

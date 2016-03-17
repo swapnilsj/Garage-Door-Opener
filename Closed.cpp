@@ -3,7 +3,7 @@
 
 #include "Closed.h"
 
-void Closed::Entry(){
+void State::Entry(){
 	std::cout << "Garage Door Closed. Beam off\n";
 	reciever->setmotorDown(false);
 	reciever->setmotorUp(false);

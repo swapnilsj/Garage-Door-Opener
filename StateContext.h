@@ -1,8 +1,6 @@
 #ifndef StateContext_h
 #define StateContext_h
 
-#include <vector>
-
 #include "State.h"
 
 class GarageDoorOpener;
@@ -12,7 +10,7 @@ class StateContext {
  public:
 	// Attributes
     void* ActiveState;
-    GarageDoorOpener *myGarageDoorOpener;
+    GarageDoorOpener* myGarageDoorOpener;
 
     // Methods
     StateContext(void*);
