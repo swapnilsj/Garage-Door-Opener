@@ -1,8 +1,20 @@
-#include "GarageDoorOpener.h"
+#include "InputScanner.h"
 
 
-// Input scanner thread
-// to be run at 1Hz
+InputScanner::InputScanner()
+{
+	printf("In it\n");
+	pthread_attr_t threadAttr;
+	pthread_attr_init(&threadAttr);		// initialize thread attributes structure
+	pthread_attr_setdetachstate(&threadAttr, PTHREAD_CREATE_JOINABLE);
+	pthread_create(&inputScannerThreadID, &threadAttr, &InputScanner::InputScannerThread, this);
+}
+
+InputScanner::~InputScanner()
+{
+    pthread_join(inputScannerThreadID, NULL);
+}
+
 void* InputScanner::InputScannerThread(void* arg)
 {
 	char userChoice = 'x';
@@ -11,7 +23,8 @@ void* InputScanner::InputScannerThread(void* arg)
 		std::cout << "\nEnter your choice: [ ";
 		std::cout << "'m' : to indicate motor overcurrent | "
 				  << "'i' : to indicate infrared beam interruption | "
-				  << "'r' : to indicate remote button press ] : ";
+				  << "'r' : to indicate remote button press | "
+				  << "'e' : to exit ] : ";
 
 		std::cin >> userChoice;
 
@@ -46,35 +59,40 @@ void* InputScanner::InputScannerThread(void* arg)
 
 void InputScanner::alertOvercurrent()
 {
-	if(MUTEX == false){
-		MUTEX = true;
-		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true){
-			OVERCURRENT = true;
+	if(::MUTEX == false)
+	{
+		::MUTEX = true;
+		if(::OVERCURRENT != true && ::INTERRUPT != true && ::BUTTON != true)
+		{
+			::OVERCURRENT = true;
 		}
-		MUTEX = false;
+		::MUTEX = false;
 	}
 }
 
+
 void InputScanner::alertbeam()
 {
-	if(MUTEX == false){
-		MUTEX = true;
-		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true){
-			INTERRUPT = true;
+	if(::MUTEX == false)
+	{
+		::MUTEX = true;
+		if(::OVERCURRENT != true && ::INTERRUPT != true && ::BUTTON != true)
+		{
+			::INTERRUPT = true;
 		}
-		MUTEX = false;
+		::MUTEX = false;
 	}
 }
 
 
 void InputScanner::alertbutton()
 {
-	if(MUTEX == false){
-		MUTEX = true;
-		if(OVERCURRENT != true && INTERRUPT != true && BUTTON != true){
-			BUTTON = true;
+	if(::MUTEX == false){
+		::MUTEX = true;
+		if(::OVERCURRENT != true && ::INTERRUPT != true && ::BUTTON != true){
+			::BUTTON = true;
 		}
-		MUTEX = false;
+		::MUTEX = false;
 	}
 }
 
