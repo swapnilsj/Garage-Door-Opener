@@ -28,8 +28,7 @@ class StateContext;
 class GarageDoorOpener {
 
  public:
-	static char receivedInput;
-	static char event;
+ 	
 	pthread_t GDOThreadID;
     StateContext* myStateContext;
 
@@ -37,7 +36,24 @@ class GarageDoorOpener {
     ~GarageDoorOpener();	// destructor
     static void* DoorThread(void*);
     
+	Closed ClosedState;
+	Closing ClosingState;
+	Open OpenState;
+	Opening OpeningState;
+	StoppedClosing SCState;
+	StoppedOpening SOState;
+
 	int count;
+
+	// HARDWARE SIMULATION
+	// Handle variables for memory mapped registers
+	uintptr_t daio_ctrl_handle;
+	uintptr_t daio_portB_handle;
+	uintptr_t daio_portC_handle;
+	bool hwFlag;
+
+	int setHWConns(void);
+	bool resetHWSimulator(void);
 };
 
 #endif // GarageDoorOpener_h

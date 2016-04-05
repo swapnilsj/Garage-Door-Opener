@@ -1,103 +1,91 @@
 #include "State.h"
 
-//State::State(GarageDoorOpener* door){
-//	Receiver = door;
-//}
 
-
-State* State::tOvercurrent()
+void State::Entry()
 {
-	return(this->eOvercurrent);
+	std::cout << "State:Entry" << std::endl;
 }
 
-State* State::tBeam()
+void State::Exit()
 {
-	return(this->Beam);
+	std::cout << "State:Exit" << std::endl;
 }
 
-State* State::tButton()
+void Closed::Entry()
 {
-	return(this->Button);
-}
-
-State* State::tFinished()
-{
-	return(this->Finished);
-}
-
-void State::setTransitions(State* OC, State* I, State* B, State* F)
-{
-	this->eOvercurrent = OC;
-	this->Beam = I;
-	this->Button = B;
-	this->Finished = F;
-}
-
-
-void Closed::Entry(){
 	std::cout << "Garage Door Closed. Beam off\n";
 	::SETMOTORDOWN = false;
 	::SETMOTORUP = false;
 	::SETBEAM = false;
 }
-void Closed::Exit(){
 
+void Closed::Exit()
+{
+	std::cout << "Beam off" << std::endl;
 }
 
-
-void Closing::Entry(){
+void Closing::Entry()
+{
 	std::cout << "Garage Door Closing, beam on" << std::endl;
 	::SETMOTORDOWN = true;
 	::SETMOTORUP = false;
 	::SETBEAM = true;
 }
-void Closing::Exit(){
+
+void Closing::Exit()
+{
 	std::cout << "Beam off" << std::endl;
 }
 
-
-
-void Open::Entry(){
-	std::cout << "Garage door opened" << std::endl;
+void Open::Entry()
+{
+	std::cout << "Garage door opened, beam off" << std::endl;
 	::SETMOTORDOWN = false;
 	::SETMOTORUP = false;
 	::SETBEAM = false;
 }
 
-void Open::Exit(){
+void Open::Exit()
+{
 
 }
 
-
-void Opening::Entry(){
-	std::cout << "Garage Door Opening, beam on\n" << std::endl;
+void Opening::Entry()
+{
+	std::cout << "Garage Door Opening, beam off\n" << std::endl;
 	::SETMOTORDOWN = false;
 	::SETMOTORUP = true;
 	::SETBEAM = false;
 }
 
-void Opening::Exit(){
-	std::cout << "Beam off\n" << std::endl;
+void Opening::Exit()
+{
+
 }
 
-void StoppedClosing::Entry(){
+void StoppedClosing::Entry()
+{
 	std::cout << "Garage Door Stopped Closing\n" << std::endl;
 	::SETMOTORDOWN = false;
 	::SETMOTORUP = false;
 	::SETBEAM = false;
-	}
+}
 
-void StoppedClosing::Exit(){
+void StoppedClosing::Exit()
+{
 
 }
 
-void StoppedOpening::Entry(){
+void StoppedOpening::Entry()
+{
 	std::cout << "Garage Door Stopped Opening, beam off\n" << std::endl;
 	::SETMOTORDOWN = false;
 	::SETMOTORUP = false;
 	::SETBEAM = false;
-	}
-void StoppedOpening::Exit(){
+}
+
+void StoppedOpening::Exit()
+{
 
 }
 
